@@ -15,4 +15,7 @@ export class HomeComponent {
 
   constructor(protected authService: AuthService) {}
 
+  logOut() {
+    this.authService.logOut()
+  }
 }

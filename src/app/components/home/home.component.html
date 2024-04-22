@@ -9,6 +9,8 @@
           <li><a routerLink="/about">About</a></li>
           @if (!authService.loggedIn) {
               <li><a routerLink="/login" class="btn primary">Login</a></li>
+          } @else {
+            <li><button class="btn primary" (click)="logOut()">Log out</button></li>
           }
       </ul>
     </nav>
