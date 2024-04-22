@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+    <div class="field" [class.error]="email?.touched && email?.invalid">
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" type="text">
+    </div>
+    <div class="field">
+        <label for="username">Username:</label>
+        <input id="username" formControlName="username" type="text">    
+    </div>
+    <div class="field" [class.error]="password?.touched && password?.invalid">
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password">    
+    </div>
+    <div class="options">
+        <button class="btn primary" type="button" [disabled]="form.invalid" (click)="register()">Register</button>
+    </div>
+</form>

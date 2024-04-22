@@ -1,0 +1,99 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    position: relative;
+    z-index: 1;
+    background-color: var(--white);
+    color: var(--color-1);
+    box-shadow: 0px 0px 16px -4px var(--black);
+}
+
+header > nav {
+    height: 60px;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav > .home > a {
+    text-transform: uppercase;
+}
+
+nav > .menu {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 12px;
+}
+
+nav > .menu > li {
+    font-family: var(--font-2);
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+main {
+    background-color: hsl(0, 0%, 90%);
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    padding: 16px;
+    background-color: white;
+    border-radius: 12px;
+    border: 2px solid var(--color-1);
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 12px;
+    
+}
+
+.field-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.input-wrapper {
+    background-color: white;
+    border: 2px solid var(--color-1);
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 8px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.input-wrapper.invalid {
+    border: 2px solid var(--red);
+}
+
+.input-wrapper > input {
+    border: none;
+    outline: none;
+    font-family: var(--font-1-mono);
+}
+
+.input-wrapper > input#dd,
+.input-wrapper > input#mm {
+    width: 2ch;
+}
+.input-wrapper > input#yyyy {
+    width: 4ch;
+}
+
+footer {
+    background-color: var(--color-1);
+    color: var(--white);
+    padding: 12px;
+}

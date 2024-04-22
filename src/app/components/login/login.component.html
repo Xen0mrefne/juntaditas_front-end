@@ -1,0 +1,15 @@
+<form [formGroup]="form">
+    <h3>Login</h3>
+    <div class="field">
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" type="text">
+    </div>
+    <div class="field">
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password">    
+    </div>
+    <a class="register-link" routerLink="/register">Don't have an account?</a>
+    <div class="options">
+        <button class="btn primary" type="button" (click)="logIn()">Log in</button>
+    </div>
+</form>

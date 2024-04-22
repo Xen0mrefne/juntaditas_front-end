@@ -1,0 +1,21 @@
+<header>
+    <nav>
+      <div class="home">
+        <a href="#">
+          Test
+        </a>
+      </div>
+      <ul class="menu">
+          <li><a routerLink="/about">About</a></li>
+          @if (!authService.loggedIn) {
+              <li><a routerLink="/login" class="btn primary">Login</a></li>
+          }
+      </ul>
+    </nav>
+</header>
+<main>
+    
+</main>
+<footer>
+  Footer
+</footer>
