@@ -37,7 +37,7 @@ export class LoginComponent {
         alert("Logged in successfully.")
         this.authService.loggedIn$.next(true)
         console.log(data)
-        this.router.navigate(["calendar"])
+        this.router.navigate(["home"])
       },
       error: (data) => {
         alert("Error")

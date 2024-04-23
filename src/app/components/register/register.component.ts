@@ -44,7 +44,7 @@ export class RegisterComponent {
         alert("Registered successfully.")
         this.authService.loggedIn$.next(true)
         console.log(data)
-        this.router.navigate(["calendar"])
+        this.router.navigate(["home"])
       },
       error: (data) => {
         alert("error")
