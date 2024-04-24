@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
-import { UserLogin } from '../../models/user';
 
 
 
@@ -35,13 +34,13 @@ export class LoginComponent {
     this.authService.logIn(user).subscribe({
       next: (data) => {
         alert("Logged in successfully.")
-        this.authService.loggedIn$.next(true)
+        this.authService.token$.next(data.token!)
         console.log(data)
         this.router.navigate(["home"])
       },
-      error: (data) => {
-        alert("Error")
-        console.log(data)
+      error: ({error}) => {
+        alert(error.message)
+        console.log(error)
       }
     })
   }

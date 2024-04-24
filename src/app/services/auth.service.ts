@@ -1,27 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { BehaviorSubject } from 'rxjs';
-import { UserAuth, UserLogin } from '../models/user';
+import { UserRegister, UserLogin } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  loggedIn$:BehaviorSubject<boolean> = new BehaviorSubject(false);
-  loggedIn!:boolean;
+  token$:BehaviorSubject<string> = new BehaviorSubject("");
+  token!:string;
 
   baseUrl = "http://localhost:8080"
 
   constructor(private httpClient: HttpClient) {
-    this.loggedIn$.subscribe((loggedIn) => {
-      this.loggedIn = loggedIn;
+    this.token$.subscribe((token) => {
+      this.token = token;
     })
   }
 
-  register(user: UserAuth) {
-    return this.httpClient.post<UserAuth>(this.baseUrl + "/auth/register", { user })
+  register(user: UserRegister) {
+    return this.httpClient.post<UserRegister>(this.baseUrl + "/auth/register", { user })
   }
 
   // TODO: Login and logout logic
@@ -30,6 +29,6 @@ export class AuthService {
   }
 
   logOut() {
-    this.loggedIn$.next(false);
+    this.token$.next("");
   }
 }

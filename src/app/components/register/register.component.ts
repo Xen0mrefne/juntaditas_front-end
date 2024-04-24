@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { UserAuth } from '../../models/user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -42,9 +41,9 @@ export class RegisterComponent {
     this.authService.register(user).subscribe({
       next: (data) => {
         alert("Registered successfully.")
-        this.authService.loggedIn$.next(true)
+        this.authService.token$.next("")
         console.log(data)
-        this.router.navigate(["home"])
+        this.router.navigate(["login"])
       },
       error: (data) => {
         alert("error")
