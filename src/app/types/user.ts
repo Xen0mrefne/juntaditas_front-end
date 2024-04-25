@@ -6,9 +6,15 @@ type UserRegister = {
 }
 
 type UserLogin = {
+    id?: string,
     email: string,
     password: string,
-    token?: string
+    token?: string,
 }
 
-export { UserRegister, UserLogin }
+type UserAuth = {
+    id: string,
+    token: string
+}
+
+export { UserRegister, UserLogin, UserAuth }

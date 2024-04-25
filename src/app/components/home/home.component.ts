@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import Juntadita from '../../types/juntadita';
+import { JuntaditaService } from '../../services/juntadita.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +14,25 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HomeComponent {
 
+  form = new FormGroup({
+    name: new FormControl<string>("")
+  })
 
-  constructor(protected authService: AuthService) {}
+  constructor(protected authService: AuthService, private juntaditaService: JuntaditaService) {}
 
   logOut() {
     this.authService.logOut()
+  }
+
+  addJuntadita() {
+    const juntadita: Juntadita = {
+      name: this.form.get("name")?.value!
+    }
+    this.juntaditaService.addJuntadita(juntadita).subscribe({
+      next: (data) => {
+        alert("success")
+        console.log(data)
+      }
+    })
   }
 }

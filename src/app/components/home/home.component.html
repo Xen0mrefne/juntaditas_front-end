@@ -7,7 +7,7 @@
       </div>
       <ul class="menu">
           <li><a routerLink="/about">About</a></li>
-          @if (authService.token === "") {
+          @if (authService.auth.token === "") {
               <li><a routerLink="/login" class="btn primary">Login</a></li>
           } @else {
             <li><button class="btn primary" (click)="logOut()">Log out</button></li>
@@ -16,7 +16,10 @@
     </nav>
 </header>
 <main>
-    
+    <form [formGroup]="form" (submit)="addJuntadita()">
+      <input formControlName="name" type="text">
+      <button type="submit" class="btn primary">Crear juntadita</button>
+    </form>
 </main>
 <footer>
   Footer

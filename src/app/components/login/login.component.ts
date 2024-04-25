@@ -33,9 +33,9 @@ export class LoginComponent {
     }
     this.authService.logIn(user).subscribe({
       next: (data) => {
-        alert("Logged in successfully.")
-        this.authService.token$.next(data.token!)
         console.log(data)
+        alert("Logged in successfully.")
+        this.authService.auth$.next({token: data.token!, id: data.id!})
         this.router.navigate(["home"])
       },
       error: ({error}) => {

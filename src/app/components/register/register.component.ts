@@ -41,7 +41,6 @@ export class RegisterComponent {
     this.authService.register(user).subscribe({
       next: (data) => {
         alert("Registered successfully.")
-        this.authService.token$.next("")
         console.log(data)
         this.router.navigate(["login"])
       },
