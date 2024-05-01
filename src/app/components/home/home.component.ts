@@ -20,6 +20,19 @@ export class HomeComponent {
 
   constructor(protected authService: AuthService, private juntaditaService: JuntaditaService) {}
 
+  ngOnInit() {
+    if (this.authService.auth.token !== "") {
+      this.juntaditaService.getJuntaditas().subscribe({
+        next: (data) => {
+          console.log(data)
+        },
+        error: ({error}) => {
+          console.log(error.message)
+        }
+      })
+    }
+  }
+
   logOut() {
     this.authService.logOut()
   }

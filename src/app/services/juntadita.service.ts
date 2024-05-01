@@ -11,8 +11,8 @@ export class JuntaditaService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getJuntaditas(userId:number) {
-    return this.httpClient.get<number>(this.baseUrl + "/juntaditas/" + userId);
+  getJuntaditas() {
+    return this.httpClient.get<number>(this.baseUrl + "/juntaditas");
   }
 
   addJuntadita(juntadita: Juntadita) {
