@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
+import { AlertService } from '../../services/alert.service';
+import { AlertType } from '../alerts/alert';
 
 
 
@@ -14,6 +16,8 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class LoginComponent {
   
+  error = false;
+  message: string | undefined = "";
 
   form = new FormGroup({
     email: new FormControl<string>(""),
@@ -22,6 +26,7 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
+    private alertService: AlertService,
     private router: Router
   ) { }
 
@@ -34,13 +39,16 @@ export class LoginComponent {
     this.authService.logIn(user).subscribe({
       next: (data) => {
         console.log(data)
-        alert("Logged in successfully.")
         this.authService.auth$.next({token: data.token!, id: data.id!})
-        this.router.navigate(["home"])
+        this.error = false;
+        this.message = data.message;
+        setTimeout(() => {
+          this.router.navigate(["home"])
+        }, 1500)
       },
       error: ({error}) => {
-        alert(error.message)
-        console.log(error)
+        this.message = error.message
+        this.error = true;
       }
     })
   }

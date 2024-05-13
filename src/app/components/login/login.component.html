@@ -8,6 +8,7 @@
         <label for="password">Password:</label>
         <input id="password" type="password" formControlName="password">    
     </div>
+    <p class="message" [class.error]="this.error">{{ message }}</p>
     <a class="register-link" routerLink="/register">Don't have an account?</a>
     <div class="options">
         <button class="btn primary" type="submit">Log in</button>

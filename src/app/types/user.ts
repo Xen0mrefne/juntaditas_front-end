@@ -14,7 +14,8 @@ type UserLogin = {
 
 type UserAuth = {
     id: string,
-    token: string
+    token: string,
+    message?: string
 }
 
 export { UserRegister, UserLogin, UserAuth }
