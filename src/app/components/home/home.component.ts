@@ -4,6 +4,8 @@ import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import Juntadita from '../../types/juntadita';
 import { JuntaditaService } from '../../services/juntadita.service';
+import { NotificationsService } from '../../services/notifications.service';
+import { NotificationTypes } from '../notification/notification';
 
 @Component({
   selector: 'app-home',
@@ -18,10 +20,14 @@ export class HomeComponent {
     name: new FormControl<string>("")
   })
 
-  constructor(protected authService: AuthService, private juntaditaService: JuntaditaService) {}
+  constructor(
+    protected authService: AuthService,
+    private juntaditaService: JuntaditaService,
+    private notifService: NotificationsService
+  ) {}
 
   ngOnInit() {
-    if (this.authService.auth.token !== "") {
+    if (this.authService.token !== "") {
       this.juntaditaService.getJuntaditas().subscribe({
         next: (data) => {
           console.log(data)
@@ -43,7 +49,7 @@ export class HomeComponent {
     }
     this.juntaditaService.addJuntadita(juntadita).subscribe({
       next: (data) => {
-        alert("success")
+        this.notifService.new(NotificationTypes.success, "Has creado una juntadita")
         console.log(data)
       }
     })

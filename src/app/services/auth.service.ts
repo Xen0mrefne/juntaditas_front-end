@@ -10,15 +10,14 @@ import { UserRegister, UserLogin, UserAuth } from '../types/user';
 })
 export class AuthService {
   
-  auth$:BehaviorSubject<UserAuth> = new BehaviorSubject({token: "", id: ""});
-  auth!:UserAuth;
+  token: string;
+  userId: string;
 
   baseUrl = "http://localhost:8080/auth"
 
   constructor(private httpClient: HttpClient) {
-    this.auth$.subscribe((auth) => {
-      this.auth = auth;
-    })
+    this.token = localStorage.getItem("token") || "";
+    this.userId = localStorage.getItem("userId") || "";
   }
 
   register(user: UserRegister) {
@@ -31,6 +30,19 @@ export class AuthService {
   }
 
   logOut() {
-    this.auth$.next({token: "", id: ""});
+    this.token = "";
+    this.userId = "";
+    localStorage.removeItem("token");
+    localStorage.removeItem("id")
+  }
+
+  setToken(token: string) {
+    this.token = token;
+    localStorage.setItem("token", token);
+  }
+
+  setUserId(userId: string) {
+    this.userId = userId;
+    localStorage.setItem("userId", userId)
   }
 }

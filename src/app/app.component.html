@@ -1,4 +1,11 @@
 
   <router-outlet />
-
-  <app-alerts></app-alerts>
+  <div id="notifications">
+    @for (notification of notifService.notifications; track $index) {
+      <app-notification
+      [type]="notification.type"
+      [message]="notification.message"
+      [id]="notification.id"
+      (remove)="onNotifRemove($event)"></app-notification>
+    }
+  </div>

@@ -1,15 +1,20 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { AlertsComponent } from './components/alerts/alerts.component';
+import { NotificationComponent } from "./components/notification/notification.component";
+import { NotificationsService } from './services/notifications.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, AlertsComponent],
+  imports: [RouterOutlet, RouterLink, NotificationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
 
-  
+  constructor(protected notifService: NotificationsService) {}
+
+  onNotifRemove(id: symbol) {
+    this.notifService.remove(id);
+  }
 }

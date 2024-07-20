@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
-import { AlertService } from '../../services/alert.service';
-import { AlertType } from '../alerts/alert';
+import { NotificationsService } from '../../services/notifications.service';
 
 
 
@@ -26,7 +25,6 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
-    private alertService: AlertService,
     private router: Router
   ) { }
 
@@ -39,7 +37,8 @@ export class LoginComponent {
     this.authService.logIn(user).subscribe({
       next: (data) => {
         console.log(data)
-        this.authService.auth$.next({token: data.token!, id: data.id!})
+        this.authService.token = data.token
+        this.authService.userId = data.id;
         this.error = false;
         this.message = data.message;
         setTimeout(() => {

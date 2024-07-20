@@ -1,19 +1,6 @@
-:host {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 12px;
-
-    overflow-x: hidden;
-}
-
 @keyframes in {
     from {
-        transform: translateX(300px);
+        transform: translateX(500px);
     }
     to {
         transform: translateX(0px);
@@ -25,11 +12,13 @@
         transform: translateX(0px);
     }
     to {
-        transform: translateX(300px);
+        transform: translateX(500px);
     }
 }
 
-.alert {
+:host {
+    width: 300px;
+    max-width: 300px;
     background-color: var(--white);
     box-shadow: 0 0 12px -4px var(--black);
     padding: 12px;
@@ -40,25 +29,25 @@
     column-gap: 16px;
 
     animation-name: in;
-    animation-duration: 500ms;
+    animation-duration: 1000ms;
     animation-fill-mode: forwards;
 }
 
-.alert.removed {
+:host.removed {
     animation-name: out;
 }
 
-.alert.success {
+:host.success {
     border: 2px solid var(--green);
 }
-.alert.success > svg {
+:host.success > .icon svg {
     fill: var(--green);
 }
 
-.alert.error {
+:host.error {
     border: 2px solid var(--red);
 }
 
-.alert.error > svg {
+:host.error > .icon svg {
     fill: var(--red);
 }

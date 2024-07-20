@@ -15,10 +15,10 @@ export class AuthInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     let interceptedReq = req.clone();
 
-    console.log("Auth: ",this.authService.auth)
-    if (this.authService.auth.token !== null) {
+    console.log("Auth token: ",this.authService.token)
+    if (this.authService.token !== "") {
       interceptedReq = req.clone({
-        headers: req.headers.set('Authorization', this.authService.auth.token)
+        headers: req.headers.set('Authorization', this.authService.token)
       });
     }
 
@@ -27,7 +27,7 @@ export class AuthInterceptorService implements HttpInterceptor {
       tap({
         error: ({error}) => {
           if (error.status === 401) {
-            if (this.authService.auth.token !== null) this.authService.logOut();
+            if (this.authService.token !== "") this.authService.logOut();
 
             this.router.navigate(["login"])
           }
