@@ -4,6 +4,7 @@ export enum NotificationTypes {
 }
 
 export default class Notification {
+    static types: NotificationTypes;
     type: NotificationTypes;
     message: string;
     id = Symbol();

@@ -37,8 +37,7 @@ export class LoginComponent {
     this.authService.logIn(user).subscribe({
       next: (data) => {
         console.log(data)
-        this.authService.token = data.token
-        this.authService.userId = data.id;
+        this.authService.setToken(data.token)
         this.error = false;
         this.message = data.message;
         setTimeout(() => {

@@ -14,7 +14,7 @@ export class AppComponent {
 
   constructor(protected notifService: NotificationsService) {}
 
-  onNotifRemove(id: symbol) {
+  removeNotif(id: symbol) {
     this.notifService.remove(id);
   }
 }

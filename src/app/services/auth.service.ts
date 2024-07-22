@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { UserRegister, UserLogin, UserAuth } from '../types/user';
+import { Router } from '@angular/router';
 
 
 
@@ -15,7 +16,7 @@ export class AuthService {
 
   baseUrl = "http://localhost:8080/auth"
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,) {
     this.token = localStorage.getItem("token") || "";
     this.userId = localStorage.getItem("userId") || "";
   }
@@ -33,7 +34,7 @@ export class AuthService {
     this.token = "";
     this.userId = "";
     localStorage.removeItem("token");
-    localStorage.removeItem("id")
+    localStorage.removeItem("id");
   }
 
   setToken(token: string) {

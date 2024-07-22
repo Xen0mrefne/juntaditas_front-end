@@ -16,10 +16,7 @@
     </nav>
 </header>
 <main>
-    <form [formGroup]="form" (submit)="addJuntadita()">
-      <input formControlName="name" type="text">
-      <button type="submit" class="btn primary">Crear juntadita</button>
-    </form>
+    <router-outlet></router-outlet>
 </main>
 <footer>
   Footer
