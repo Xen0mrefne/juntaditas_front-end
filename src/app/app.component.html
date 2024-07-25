@@ -1,11 +1,19 @@
 
-  <router-outlet />
+  <router-outlet tabindex="-1" />
   <div id="notifications">
     @for (notification of notifService.notifications; track $index) {
       <app-notification
       [type]="notification.type"
       [message]="notification.message"
       [id]="notification.id"
-      (onRemove)="removeNotif($event)"></app-notification>
+      (remove)="onRemoveNotif($event)"></app-notification>
     }
   </div>
+
+  @if (modalService.open) {
+    <app-modal-form
+    [title]="modalService.title"
+    [formTemplate]="modalService.formTemplate"
+    [form]="modalService.form"
+    [isClosing]="modalService.isClosing"></app-modal-form>
+  }

@@ -13,14 +13,14 @@ export const routes: Routes = [
         component: HomeComponent,
         children: [
             {
-                path: "juntadita",
+                path: "juntadita/:id",
                 title: "Juntadita",
                 component: JuntaditaComponent
             },
             {
                 path: "",
                 component: JuntaditaMenuComponent,
-                pathMatch: "full"
+                pathMatch: "full",
             }
         ]
     },

@@ -15,7 +15,7 @@ export class NotificationComponent {
   @Input() type!: NotificationTypes;
   @Input() message!: string;
   
-  @Output() onRemove = new EventEmitter<symbol>();
+  @Output() remove = new EventEmitter<symbol>();
   
   @HostBinding("class.removed") removed: boolean = false;
   @HostBinding("class.success") success: boolean = false;
@@ -24,7 +24,7 @@ export class NotificationComponent {
   timeout = setTimeout(() => {
     this.removed = true;
     setTimeout(() => {
-      this.onRemove.emit(this.id);
+      this.remove.emit(this.id);
     }, 1000)
   }, 5000)
 

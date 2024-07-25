@@ -25,8 +25,9 @@ export class AuthInterceptorService implements HttpInterceptor {
     console.log("Intercepted Req: ", interceptedReq)
     return next.handle(interceptedReq).pipe(
       tap({
-        error: ({error}) => {
-          if (error.status === 401) {
+        error: ({error, status}) => {
+          console.log(error)
+          if (status === 401) {
             if (this.authService.token !== "") this.authService.logOut();
 
             this.router.navigate(["login"])

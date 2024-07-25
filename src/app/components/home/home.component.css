@@ -39,57 +39,6 @@ nav > .menu > li {
 
 main {
     background-color: hsl(0, 0%, 90%);
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-form {
-    padding: 16px;
-    background-color: white;
-    border-radius: 12px;
-    border: 2px solid var(--color-1);
-    
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 12px;
-    
-}
-
-.field-group {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.input-wrapper {
-    background-color: white;
-    border: 2px solid var(--color-1);
-    border-radius: 12px;
-    overflow: hidden;
-    padding: 8px;
-    display: inline-flex;
-    align-items: center;
-}
-
-.input-wrapper.invalid {
-    border: 2px solid var(--red);
-}
-
-.input-wrapper > input {
-    border: none;
-    outline: none;
-    font-family: var(--font-1-mono);
-}
-
-.input-wrapper > input#dd,
-.input-wrapper > input#mm {
-    width: 2ch;
-}
-.input-wrapper > input#yyyy {
-    width: 4ch;
 }
 
 footer {

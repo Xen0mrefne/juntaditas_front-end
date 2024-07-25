@@ -1,1 +1,4 @@
-<p>juntadita works!</p>
+<p>juntadita works! {{ id }}</p>
+@if (!loading && juntadita !== undefined) {
+    <p>{{ juntadita.name }}</p>
+}

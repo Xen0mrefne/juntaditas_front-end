@@ -1,4 +1,19 @@
-<form [formGroup]="form" (submit)="addJuntadita()">
-    <input formControlName="name" type="text">
-    <button type="submit" class="btn primary">Crear juntadita</button>
-</form>
+<button (click)="onNuevaJuntada()" class="btn primary">Nueva juntadita</button>
+
+<div class="juntaditas">
+    @for (juntadita of juntaditas; track $index) {
+        <app-juntadita-item
+        [name]="juntadita.name"
+        [id]="juntadita._id!"
+        (viewJuntadita)="onViewJuntadita($event)"></app-juntadita-item>
+    }
+</div>
+
+<ng-template #formTemplate>
+    <form [formGroup]="form" (submit)="createJuntadita()">
+        <input formControlName="name" type="text">
+        <button class="btn primary" type="submit" [disabled]="form.invalid">
+            Aceptar
+        </button>
+    </form>
+</ng-template>

@@ -12,7 +12,11 @@ export class JuntaditaService {
   constructor(private httpClient: HttpClient) { }
 
   getJuntaditas() {
-    return this.httpClient.get<number>(this.baseUrl + "/juntaditas");
+    return this.httpClient.get<Juntadita[]>(this.baseUrl + "/juntaditas");
+  }
+
+  getJuntadita(id: string) {
+    return this.httpClient.get<Juntadita>(this.baseUrl + "/juntaditas/" + id)
   }
 
   addJuntadita(juntadita: Juntadita) {

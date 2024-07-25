@@ -1,0 +1,72 @@
+:host {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    background-color: #00000066;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background-color, 300ms;
+}
+
+:host.closed {
+    background-color: #00000000;
+}
+
+.modal {
+    padding: 20px;
+    max-width: 512px;
+    width: 100%;
+    margin: 0 20px;
+    border-radius: 12px;
+
+    background-color: #fff;
+
+    animation-name: modal-in;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+}
+
+.modal.closed {
+    animation-name: modal-out;
+}
+
+.modal .title {
+    padding-bottom: 20px;
+    font-weight: normal;
+}
+
+.modal .actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal .actions > * {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+@keyframes modal-in {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes modal-out {
+    from {
+        transform: scale(1)
+    }
+    to {
+        transform: scale(0);
+    }
+}
