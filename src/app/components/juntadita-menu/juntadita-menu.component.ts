@@ -20,7 +20,7 @@ export class JuntaditaMenuComponent {
 
   juntaditas: Juntadita[] = [];
 
-  @ViewChild("formTemplate") formTemplate!: TemplateRef<HTMLFormElement>;
+  @ViewChild("formTemplate") formTemplate!: TemplateRef<HTMLElement>;
   form!: FormGroup;
 
   loading = false;
@@ -63,7 +63,7 @@ export class JuntaditaMenuComponent {
       ])
     })
     this.modalService.setTitle("Que nombre tendra esta nueva juntada?")
-    this.modalService.setForm(this.form, this.formTemplate)
+    this.modalService.setTemplate(this.formTemplate)
     //this.modalService.setForm()
     this.modalService.show();
   }
@@ -72,7 +72,7 @@ export class JuntaditaMenuComponent {
     const juntadita: Juntadita = {
       name: this.form.get("name")!.value
     }
-    this.juntaditaService.addJuntadita(juntadita).subscribe({
+    this.juntaditaService.createJuntadita(juntadita).subscribe({
       next: (data) => {
         this.notifService.new(NotificationTypes.success, "Has creado una juntadita")
         console.log(data)

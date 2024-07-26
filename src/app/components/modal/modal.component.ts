@@ -4,16 +4,15 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } fr
 import { ModalService } from '../../services/modal.service';
 
 @Component({
-  selector: 'app-modal-form',
+  selector: 'app-modal',
   standalone: true,
   imports: [ReactiveFormsModule, NgTemplateOutlet],
-  templateUrl: './modal-form.component.html',
-  styleUrl: './modal-form.component.css'
+  templateUrl: './modal.component.html',
+  styleUrl: './modal.component.css'
 })
-export class ModalFormComponent {
+export class ModalComponent {
   @Input() title!: string;
-  @Input() form!: FormGroup;
-  @Input() formTemplate!: TemplateRef<HTMLFormElement>;
+  @Input() template!: TemplateRef<HTMLElement>;
   @Input() isClosing!: boolean;
 
   constructor(private modalService: ModalService) {}

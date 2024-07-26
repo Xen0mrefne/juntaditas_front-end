@@ -11,9 +11,8 @@
   </div>
 
   @if (modalService.open) {
-    <app-modal-form
+    <app-modal
     [title]="modalService.title"
-    [formTemplate]="modalService.formTemplate"
-    [form]="modalService.form"
-    [isClosing]="modalService.isClosing"></app-modal-form>
+    [template]="modalService.template"
+    [isClosing]="modalService.isClosing"></app-modal>
   }

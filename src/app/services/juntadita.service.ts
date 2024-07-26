@@ -19,7 +19,7 @@ export class JuntaditaService {
     return this.httpClient.get<Juntadita>(this.baseUrl + "/juntaditas/" + id)
   }
 
-  addJuntadita(juntadita: Juntadita) {
+  createJuntadita(juntadita: Juntadita) {
     return this.httpClient.post<Juntadita>(this.baseUrl + "/juntaditas", { juntadita })
   }
 }

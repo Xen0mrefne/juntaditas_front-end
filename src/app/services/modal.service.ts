@@ -9,18 +9,16 @@ export class ModalService {
   open = false;
   isClosing = false;
   title = "";
-  form!: FormGroup;
-  formTemplate!: TemplateRef<HTMLFormElement>;
+  template!: TemplateRef<HTMLElement>;
 
   constructor() { }
 
-  setForm(formGroup: FormGroup, template: TemplateRef<HTMLFormElement>) {
-    this.form = formGroup;
-    this.formTemplate = template
-  }
-
   setTitle(title: string) {
     this.title = title
+  }
+
+  setTemplate(template: TemplateRef<HTMLElement>) {
+    this.template = template;
   }
 
   show() {

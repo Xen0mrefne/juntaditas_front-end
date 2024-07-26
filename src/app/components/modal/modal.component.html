@@ -1,6 +1,6 @@
 <div (click)="onModalClick($event)" [class.closed]="isClosing" class="modal">
     <h3 class="title">{{ title }}</h3>
     <div class="body">
-        <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+        <ng-container *ngTemplateOutlet="template"></ng-container>
     </div>
 </div>
