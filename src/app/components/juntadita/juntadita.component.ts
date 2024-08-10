@@ -11,7 +11,6 @@ import { JuntaditaService } from '../../services/juntadita.service';
   styleUrl: './juntadita.component.css'
 })
 export class JuntaditaComponent {
-  id!: string;
   juntadita!: Juntadita;
 
   loading = true;
@@ -22,9 +21,10 @@ export class JuntaditaComponent {
   ) {}
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get("id")!;
-    this.juntaditaService.getJuntadita(this.id).subscribe({
+    const id = this.route.snapshot.paramMap.get("id")!;
+    this.juntaditaService.getJuntadita(id).subscribe({
       next: (juntadita) => {
+        console.log(juntadita)
         this.juntadita = juntadita
       },
       error: ({error}) => {

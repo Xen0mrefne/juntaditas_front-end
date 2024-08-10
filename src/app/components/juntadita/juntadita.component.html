@@ -1,4 +1,9 @@
-<p>juntadita works! {{ id }}</p>
 @if (!loading && juntadita !== undefined) {
     <p>{{ juntadita.name }}</p>
+    @for (member of juntadita.members; track $index) {
+        <p>{{ member.username }}</p>
+    }
+} @else {
+    <p>Loading...</p>
+
 }

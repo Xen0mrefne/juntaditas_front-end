@@ -1,5 +1,6 @@
 
-  <router-outlet tabindex="-1" />
+  <router-outlet/>
+  
   <div id="notifications">
     @for (notification of notifService.notifications; track $index) {
       <app-notification
@@ -11,8 +12,5 @@
   </div>
 
   @if (modalService.open) {
-    <app-modal
-    [title]="modalService.title"
-    [template]="modalService.template"
-    [isClosing]="modalService.isClosing"></app-modal>
+    <app-modal></app-modal>
   }

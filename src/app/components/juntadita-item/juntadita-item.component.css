@@ -3,4 +3,9 @@
     padding: 20px;
     border-radius: 12px;
     background-color: var(--white);
+    cursor: pointer;
+}
+
+:host:hover {
+    transform: scale(1.05);
 }

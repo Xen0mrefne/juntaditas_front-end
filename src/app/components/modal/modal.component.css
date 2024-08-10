@@ -11,12 +11,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    transition: background-color, 300ms;
-}
-
-:host.closed {
-    background-color: #00000000;
 }
 
 .modal {
