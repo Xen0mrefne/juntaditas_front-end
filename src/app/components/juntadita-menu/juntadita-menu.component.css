@@ -8,6 +8,20 @@
     margin-top: 16px;
     display: flex;
     gap: 12px;
+
+    list-style-type: none;
+}
+
+.juntadita {
+    display: block;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+.juntadita:hover {
+    transform: scale(1.05);
 }
 
 form {

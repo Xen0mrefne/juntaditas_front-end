@@ -1,4 +1,4 @@
-import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { JuntaditaService } from '../../services/juntadita.service';
@@ -6,13 +6,12 @@ import { NotificationsService } from '../../services/notifications.service';
 import Juntadita from '../../types/juntadita';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NotificationTypes } from '../notification/notification';
-import { JuntaditaItemComponent } from "../juntadita-item/juntadita-item.component";
 import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-juntadita-menu',
   standalone: true,
-  imports: [ReactiveFormsModule, JuntaditaItemComponent],
+  imports: [ReactiveFormsModule],
   templateUrl: './juntadita-menu.component.html',
   styleUrl: './juntadita-menu.component.css'
 })
@@ -83,7 +82,7 @@ export class JuntaditaMenuComponent {
     })
   }
 
-  onViewJuntadita(id: string) {
+  goToJuntadita(id: string) {
     this.router.navigate(["home/juntadita/" + id])
   }
 }

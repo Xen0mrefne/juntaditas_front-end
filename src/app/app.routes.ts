@@ -10,6 +10,7 @@ import { JuntaditaMenuComponent } from './components/juntadita-menu/juntadita-me
 export const routes: Routes = [
     {
         path: "home",
+        title: "Juntaditas",
         component: HomeComponent,
         children: [
             {
@@ -25,7 +26,7 @@ export const routes: Routes = [
         ]
     },
     {path: "about", component: AboutComponent},
-    {path: "login", component: LoginComponent},
+    {path: "login", component: LoginComponent, title: "Iniciar Sesión"},
     {path: "register", component: RegisterComponent},
     {path: "", redirectTo: "/home", pathMatch: "full"}
 ];

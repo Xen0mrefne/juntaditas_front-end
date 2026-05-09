@@ -1,13 +1,10 @@
 <button (click)="onNuevaJuntada()" class="btn primary">Nueva juntadita</button>
 
-<div class="juntadita-list">
+<ul class="juntadita-list">
     @for (juntadita of juntaditas; track $index) {
-        <app-juntadita-item
-        [name]="juntadita.name"
-        [id]="juntadita._id!"
-        (viewJuntadita)="onViewJuntadita($event)"></app-juntadita-item>
+        <li class="juntadita" (click)="goToJuntadita(juntadita._id!)">{{juntadita.name}}</li>
     }
-</div>
+</ul>
 
 <ng-template #formTemplate>
     <form [formGroup]="form" (submit)="createJuntadita()">

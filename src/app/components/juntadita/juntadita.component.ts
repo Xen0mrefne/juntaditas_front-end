@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import Juntadita from '../../types/juntadita';
 import { JuntaditaService } from '../../services/juntadita.service';
 
 @Component({
   selector: 'app-juntadita',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './juntadita.component.html',
   styleUrl: './juntadita.component.css'
 })
