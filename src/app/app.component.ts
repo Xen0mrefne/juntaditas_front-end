@@ -10,7 +10,7 @@ import { DialogsComponent } from "./components/dialogs/dialogs.component";
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, RouterLink, NotificationComponent, ModalComponent, DialogsComponent],
+    imports: [RouterOutlet, NotificationComponent, ModalComponent, DialogsComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })

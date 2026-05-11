@@ -2,11 +2,12 @@ import { NgTemplateOutlet } from '@angular/common';
 import { Component, HostListener, Input, TemplateRef, ViewChild } from '@angular/core';
 import { ModalContent, ModalTitle } from '../../entities/Modal';
 import { DialogService } from '../../services/dialog.service';
+import { A11yModule } from '@angular/cdk/a11y';
 
 @Component({
     selector: 'app-modal',
     standalone: true,
-    imports: [NgTemplateOutlet],
+    imports: [NgTemplateOutlet, A11yModule],
     templateUrl: './modal.component.html',
     styleUrl: './modal.component.css'
 })

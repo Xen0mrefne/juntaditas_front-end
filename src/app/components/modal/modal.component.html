@@ -1,4 +1,4 @@
-<div (click)="onModalClick($event)" [class.closed]="isClosing" class="modal" #modal (load)="onLoad()" tabindex="0">
+<div (click)="onModalClick($event)" [class.closed]="isClosing" class="modal" #modal cdkTrapFocus [cdkTrapFocusAutoCapture]="true" tabindex="0">
     <h3 class="title">{{ title }}</h3>
     <div class="body">
         <ng-container *ngTemplateOutlet="content"></ng-container>
