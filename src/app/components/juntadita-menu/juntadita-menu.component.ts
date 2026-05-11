@@ -6,83 +6,90 @@ import { NotificationsService } from '../../services/notifications.service';
 import Juntadita from '../../types/juntadita';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NotificationTypes } from '../notification/notification';
-import { ModalService } from '../../services/modal.service';
+import { DialogService } from '../../services/dialog.service';
+import { Modal } from '../../entities/Modal';
 
 @Component({
-  selector: 'app-juntadita-menu',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './juntadita-menu.component.html',
-  styleUrl: './juntadita-menu.component.css'
+    selector: 'app-juntadita-menu',
+    standalone: true,
+    imports: [ReactiveFormsModule],
+    templateUrl: './juntadita-menu.component.html',
+    styleUrl: './juntadita-menu.component.css'
 })
 export class JuntaditaMenuComponent {
 
-  juntaditas: Juntadita[] = [];
+    juntaditas: Juntadita[] = [];
 
-  @ViewChild("formTemplate") formTemplate!: TemplateRef<HTMLElement>;
-  form!: FormGroup;
+    @ViewChild("formTemplate") formTemplate!: TemplateRef<HTMLElement>;
 
-  loading = false;
-  creating = false;
+    form!: FormGroup;
 
-  constructor(
-    protected authService: AuthService,
-    private juntaditaService: JuntaditaService,
-    private notifService: NotificationsService,
-    private router: Router,
-    private modalService: ModalService
-  ) {}
+    loading = false;
+    creating = false;
+    modalId!: symbol;
 
-  ngOnInit() {
-    this.getJuntaditas()
-  }
+    constructor(
+        protected authService: AuthService,
+        private juntaditaService: JuntaditaService,
+        private notifService: NotificationsService,
+        private router: Router,
+        private dialogService: DialogService
+    ) { }
 
-  getJuntaditas() {
-    this.loading = true;
-    if (this.authService.token !== "") {
-      this.juntaditaService.getJuntaditas().subscribe({
-        next: (juntaditas) => {
-          this.juntaditas = juntaditas
-          console.log(this.juntaditas)
-        },
-        error: ({error}) => {
-          console.log(error.message)
-        },
-        complete: () => {
-          this.loading = false;
+    ngOnInit() {
+        this.getJuntaditas()
+    }
+
+    getJuntaditas() {
+        this.loading = true;
+        if (this.authService.token !== "") {
+            this.juntaditaService.getJuntaditas().subscribe({
+                next: (juntaditas) => {
+                    this.juntaditas = juntaditas
+                    console.log(this.juntaditas)
+                },
+                error: ({ error }) => {
+                    console.log(error.message)
+                },
+                complete: () => {
+                    this.loading = false;
+                }
+            })
         }
-      })
     }
-  }
 
-  onNuevaJuntada() {
-    this.form = new FormGroup({
-      name: new FormControl<string>("", [
-        Validators.required, Validators.minLength(3)
-      ])
-    })
-    this.modalService.setTitle("Que nombre tendra esta nueva juntada?")
-    this.modalService.setTemplate(this.formTemplate)
-    //this.modalService.setForm()
-    this.modalService.show();
-  }
-
-  createJuntadita() {
-    const juntadita: Juntadita = {
-      name: this.form.get("name")!.value
+    onNuevaJuntada() {
+        this.form = new FormGroup({
+            name: new FormControl<string>("", [
+                Validators.required, Validators.minLength(3)
+            ])
+        })
+        const modal = this.dialogService.createModal({ title: "Que nombre tendra esta nueva juntada?", content: this.formTemplate });
+        this.modalId = modal.id;
+        this.dialogService.showModal(modal);
     }
-    this.juntaditaService.createJuntadita(juntadita).subscribe({
-      next: (data) => {
-        this.notifService.new(NotificationTypes.success, "Has creado una juntadita")
-        console.log(data)
-        this.creating = false;
-        this.getJuntaditas();
-        this.modalService.close();
-      }
-    })
-  }
 
-  goToJuntadita(id: string) {
-    this.router.navigate(["home/juntadita/" + id])
-  }
+    inputLoaded(e: Event) {
+        const target = e.target as HTMLInputElement;
+        target.focus();
+    }
+
+    createJuntadita() {
+        const juntadita: Juntadita = {
+            name: this.form.get("name")!.value
+        }
+        this.juntaditaService.createJuntadita(juntadita).subscribe({
+            next: (data) => {
+                this.notifService.new(NotificationTypes.success, "Has creado una juntadita")
+                console.log(data)
+                this.creating = false;
+                this.getJuntaditas();
+                this.dialogService.closeModal(this.modalId);
+            }
+        })
+    }
+
+    goToJuntadita(id: string) {
+        this.router.navigate(["home/juntadita/" + id])
+    }
 }

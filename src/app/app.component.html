@@ -1,16 +1,14 @@
+<router-outlet />
 
-  <router-outlet/>
-  
-  <div id="notifications">
+<div id="notifications">
     @for (notification of notifService.notifications; track $index) {
-      <app-notification
-      [type]="notification.type"
-      [message]="notification.message"
-      [id]="notification.id"
-      (remove)="onRemoveNotif($event)"></app-notification>
+        <app-notification [type]="notification.type" [message]="notification.message" [id]="notification.id"
+            (remove)="onRemoveNotif($event)"></app-notification>
     }
-  </div>
+</div>
 
-  @if (modalService.open) {
+@if (modalService.open) {
     <app-modal></app-modal>
-  }
+}
+
+<snk-dialogs></snk-dialogs>

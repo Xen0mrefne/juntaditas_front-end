@@ -1,0 +1,8 @@
+@for (modal of dialogService.modals; track $index) {
+    <app-modal
+        [id]="modal.id"
+        [title]="modal.title"
+        [content]="modal.content"
+        [isClosing]="modal.isClosing"
+    ></app-modal>
+}
