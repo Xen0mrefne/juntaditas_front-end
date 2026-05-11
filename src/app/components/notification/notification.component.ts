@@ -2,11 +2,10 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 import { NotificationTypes } from './notification';
 
 @Component({
-  selector: 'app-notification',
-  standalone: true,
-  imports: [],
-  templateUrl: './notification.component.html',
-  styleUrl: './notification.component.css'
+    selector: 'app-notification',
+    imports: [],
+    templateUrl: './notification.component.html',
+    styleUrl: './notification.component.css'
 })
 export class NotificationComponent {
   types = NotificationTypes;

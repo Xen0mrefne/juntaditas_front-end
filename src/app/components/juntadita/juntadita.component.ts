@@ -4,11 +4,11 @@ import Juntadita from '../../types/juntadita';
 import { JuntaditaService } from '../../services/juntadita.service';
 
 @Component({
-  selector: 'app-juntadita',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './juntadita.component.html',
-  styleUrl: './juntadita.component.css'
+    selector: 'app-juntadita',
+    standalone: true,
+    imports: [RouterLink],
+    templateUrl: './juntadita.component.html',
+    styleUrl: './juntadita.component.css'
 })
 export class JuntaditaComponent {
   juntadita!: Juntadita;
